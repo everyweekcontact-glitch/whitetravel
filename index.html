@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="meta.title">White Travel — Explore the world with us</title>
+  <meta name="description" content="White Travel Agency — Inspiring journeys, curated deals, and seamless planning. Fly around the world with style." data-i18n-attr="content:meta.description"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/x-icon" href="white-travel-logo.png">
+  <style>
+    :root{
+      --brand:#2fbfae; --brand-2:#0f6b63; --brand-3:#e6fffb; --ink:#0c1d1b; --muted:#5f7a76;
+      --bg:#f7fffd; --white:#ffffff; --shadow:0 10px 25px rgba(15,107,99,.15);
+      --radius:18px; --radius-lg:28px;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Poppins,Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif}
+    img{max-width:100%;display:block} a{color:var(--brand-2);text-decoration:none} a:hover{opacity:.9}
+    .container{width:min(1200px,92%);margin-inline:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);backdrop-filter:saturate(180%) blur(8px);box-shadow:var(--shadow)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+    .logo img{width:44px;height:44px;border-radius:50%;box-shadow:0 8px 20px rgba(47,191,174,.35)}
+    .logo span{font-size:1.06rem}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{padding:10px 14px;border-radius:12px;font-weight:600}
+    .menu a:hover{background:var(--brand-3)}
+    .cta{background:linear-gradient(180deg,var(--brand),#27a092);color:#fff;padding:10px 16px;border-radius:14px;box-shadow:0 8px 18px rgba(47,191,174,.35);display:inline-flex;gap:10px;align-items:center;border:0;cursor:pointer;font-weight:700}
+    .cta:hover{transform:translateY(-2px);transition:.25s ease;box-shadow:0 14px 30px rgba(47,191,174,.45)}
+    .lang{display:flex;align-items:center;gap:8px;border:1px solid #cde9e5;border-radius:12px;padding:8px 10px;background:#fff}
+    .hero{position:relative;overflow:hidden;isolation:isolate}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;padding:72px 0}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:var(--brand-3);border-radius:999px;padding:8px 12px;font-weight:600;color:var(--brand-2);box-shadow:var(--shadow)}
+    .title{font-size:clamp(2.1rem,4vw,3.6rem);line-height:1.1;margin:14px 0 10px}
+    .subtitle{color:var(--muted);font-weight:500;margin:0 0 22px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .ghost{padding:10px 16px;border-radius:14px;border:2px solid var(--brand-2);color:var(--brand-2);background:transparent;font-weight:700}
+    .ghost:hover{background:var(--brand-3)}
+    .planet{position:relative;aspect-ratio:1/1;max-width:520px;margin-inline:auto}
+    .globe{position:absolute;inset:0;border-radius:50%;background:radial-gradient(120% 120% at 20% 20%, var(--brand) 0%, #45d8c6 40%, #1ea89a 100%)}
+    .orbit{position:absolute;inset:0;border-radius:50%;border:3px solid rgba(0,0,0,.1);filter:drop-shadow(0 6px 12px rgba(0,0,0,.08))}
+    .plane{position:absolute;left:50%;top:50%;translate:-50% -50%;width:22%;animation:fly 8s linear infinite}
+    @keyframes fly{from{rotate:0deg;transform-origin:220px 0}to{rotate:360deg;transform-origin:220px 0}}
+    .halo{position:absolute;inset:-50px;border-radius:50%;background:conic-gradient(from 180deg, transparent 0 50%, rgba(47,191,174,.08) 60%, transparent 70%);filter:blur(30px);z-index:-1}
+    section{padding:70px 0}
+    .section-title{font-size:clamp(1.6rem,2.6vw,2.4rem);margin:0 0 10px}
+    .section-sub{color:var(--muted);margin:0 0 26px}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}
+    .chip{background:#fff;border:1px dashed var(--brand-2);color:var(--brand-2);padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:600}
+    .chip:hover{background:var(--brand-3)}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .card{position:relative;border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow);cursor:pointer}
+    .card picture,.card img{width:100%;height:210px;object-fit:cover}
+    .card .info{position:absolute;inset:auto 0 0;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5));color:#fff}
+    .tag{background:rgba(255,255,255,.86);color:var(--ink);padding:6px 10px;border-radius:999px;font-weight:700}
+    .like{background:rgba(15,107,99,.95);color:#fff;padding:6px 10px;border-radius:999px;font-weight:700}
+    .card:hover{transform:translateY(-4px);transition:.25s ease;box-shadow:0 18px 40px rgba(0,0,0,.15)}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}
+    .icon{width:44px;height:44px;border-radius:12px;background:var(--brand-3);display:grid;place-items:center}
+    .carousel{position:relative} .track{display:flex;gap:16px;overflow:auto scroll;padding-bottom:8px;scroll-snap-type:x mandatory}
+    .deal{flex:0 0 300px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);scroll-snap-align:start}
+    .deal img{height:160px;width:100%;object-fit:cover;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)}
+    .deal .pad{padding:14px} .deal .price{font-weight:800;color:var(--brand-2)}
+    .ribbon{background:linear-gradient(90deg,var(--brand),#27a092);color:#fff;border-radius:var(--radius-lg);padding:24px 20px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;box-shadow:var(--shadow)}
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{background:#fff;border-radius:var(--radius);padding:18px 18px 16px;box-shadow:var(--shadow)}
+    .stars{letter-spacing:1px}
+    .contact{display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    form{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    label{font-weight:700;font-size:.9rem}
+    input,textarea,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #d7e9e6;background:#f9fffe}
+    textarea{min-height:120px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;border:0;border-radius:14px;padding:12px 16px;background:var(--brand-2);color:#fff;font-weight:800;cursor:pointer}
+    .btn:hover{filter:brightness(1.06)}
+    footer{padding:50px 0 24px;background:#0f2f2b;color:#e5fffb}
+    .footer-grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:24px}
+    .foot-logo{display:flex;align-items:center;gap:12px}
+    .foot-logo img{width:42px;height:42px;border-radius:50%}
+    .newsletter{display:flex;gap:10px} .newsletter input{background:#ffffff;border:0}
+    .legal{margin-top:30px;color:#bfe9e3;font-size:.9rem}
+    .fab{position:fixed;right:16px;bottom:16px;display:grid;gap:12px;z-index:40}
+    .fab a{display:grid;place-items:center;width:52px;height:52px;border-radius:999px;background:var(--brand);color:#fff;box-shadow:0 12px 28px rgba(47,191,174,.45)}
+    .fab a:hover{transform:translateY(-3px)}
+    @media (max-width:1000px){.hero .wrap,.contact{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.services{grid-template-columns:repeat(2,1fr)}.testi{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.menu{display:none}.grid{grid-template-columns:1fr}.services{grid-template-columns:1fr}.testi{grid-template-columns:1fr}.title{font-size:clamp(1.8rem,9vw,3rem)}}
+  </style>
+</head>
+<body>
+  <div class="fab" aria-label="quick actions">
+    <a href="#contact" title="Chat with us" aria-label="chat">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12c0 4.418-4.03 8-9 8-1.093 0-2.137-.17-3.1-.483L3 20l1.638-3.277C4.232 15.54 4 14.794 4 14c0-4.418 4.03-8 9-8s8 3.582 8 6z" stroke="#fff" stroke-width="2"/></svg>
+    </a>
+    <a href="#deals" title="Hot deals" aria-label="deals">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21l1.18-6.86-5-4.87 6.91-1.01L12 2z" stroke="#fff" stroke-width="2"/></svg>
+    </a>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top">
+        <img src="white-travel-logo.png" alt="White Travel logo"/>
+        <span>WHITE TRAVEL</span>
+      </a>
+      <nav class="menu" aria-label="primary">
+        <a href="#destinations" data-i18n="nav.destinations">Destinations</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#deals" data-i18n="nav.deals">Deals</a>
+        <a href="#why" data-i18n="nav.why">Why Us</a>
+        <a href="#testimonials" data-i18n="nav.reviews">Reviews</a>
+        <a class="cta" href="#contact" aria-label="contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.82 19.82 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.82 19.82 0 0 1 2.09 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.32 1.78.6 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.17a2 2 0 0 1 2.11-.45c.85.28 1.73.48 2.63.6A2 2 0 0 1 22 16.92z" fill="#fff"/></svg>
+          <span data-i18n="nav.contact">Contact</span>
+        </a>
+        <div class="lang" title="Language">
+          <span>🌐</span>
+          <select id="lang-select" aria-label="Language selector">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container wrap">
+      <div>
+        <div class="badge" data-i18n="hero.badge">Fly further, spend less</div>
+        <h1 class="title" data-i18n="hero.title">See the world in mint & style ✈️</h1>
+        <p class="subtitle" data-i18n="hero.subtitle">Bespoke trips, lightning‑fast support, and exclusive fares. From city breaks to once‑in‑a‑lifetime escapes — your journey starts here.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#destinations">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m21 21-6-6" stroke="#fff" stroke-width="2"/><circle cx="10" cy="10" r="7" stroke="#fff" stroke-width="2"/></svg>
+            <span data-i18n="hero.explore">Explore Destinations</span>
+          </a>
+          <a class="ghost" href="#contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2"/></svg>
+            <span data-i18n="hero.quote">Get a free quote</span>
+          </a>
+        </div>
+        <div class="chips" style="margin-top:18px">
+          <button class="chip" onclick="document.getElementById('where')?.value='Tokyo, Japan'">Tokyo</button>
+          <button class="chip" onclick="document.getElementById('where')?.value='Paris, France'">Paris</button>
+          <button class="chip" onclick="document.getElementById('where')?.value='Bali, Indonesia'">Bali</button>
+          <button class="chip" onclick="document.getElementById('where')?.value='New York, USA'">New York</button>
+          <button class="chip" onclick="document.getElementById('where')?.value='Patagonia, Argentina'">Patagonia</button>
+        </div>
+      </div>
+      <div class="planet" aria-hidden="true">
+        <div class="halo"></div><div class="globe"></div><div class="orbit"></div>
+        <svg class="plane" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill="#0f2f2b" d="M476.864 3.31c-9.42-4.093-20.38-2.078-27.644 5.186L287.37 170.347 123.04 129.35 84.89 167.5l136.28 64.14L138.9 311.91l-68.19-8.52-28.35 28.35 89.28 44.64 44.65 89.27 28.35-28.35-8.52-68.19 80.27-82.27 64.14 136.28 38.15-38.15-41-164.33L503.5 62.78c7.27-7.264 9.28-18.224 5.19-27.644-4.08-9.424-12.99-15.987-23.03-16.826Z"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="destinations">
+    <div class="container">
+      <h2 class="section-title" data-i18n="dest.title">Trending destinations</h2>
+      <p class="section-sub" data-i18n="dest.sub">Click a card to bookmark. Prices update live.</p>
+      <div class="grid">
+        <article class="card" onclick="toggleLike(this)">
+          <img alt="Paris" src="https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1200&auto=format&fit=crop"/>
+          <div class="info">
+            <span>Paris, France</span>
+            <span class="tag like" data-i18n="ui.save">♥ Save</span>
+          </div>
+        </article>
+        <article class="card" onclick="toggleLike(this)">
+          <img alt="Bali" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop"/>
+          <div class="info"><span>Bali, Indonesia</span><span class="tag like" data-i18n="ui.save">♥ Save</span></div>
+        </article>
+        <article class="card" onclick="toggleLike(this)">
+          <img alt="New York" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"/>
+          <div class="info"><span>New York, USA</span><span class="tag like" data-i18n="ui.save">♥ Save</span></div>
+        </article>
+        <article class="card" onclick="toggleLike(this)">
+          <img alt="Tokyo" src="https://images.unsplash.com/photo-1517720359744-6d12f8a09b10?q=80&w=1200&auto=format&fit=crop"/>
+          <div class="info"><span>Tokyo, Japan</span><span class="tag like" data-i18n="ui.save">♥ Save</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title" data-i18n="svc.title">Concierge‑level services</h2>
+      <p class="section-sub" data-i18n="svc.sub">From planning to touchdown — we take care of every detail.</p>
+      <div class="services">
+        <div class="service">
+          <div class="icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 16v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2" stroke="currentColor" stroke-width="2"/><path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="svc.monitor.title">Flight deals monitor</h3>
+            <p class="section-sub"><span data-i18n="svc.monitor.desc">We track live fares and ping you when prices drop.</span> <a href="#deals" data-i18n="svc.monitor.link">See hot deals →</a></p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1 1 18 0Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="svc.tailor.title">Tailor‑made itineraries</h3>
+            <p class="section-sub" data-i18n="svc.tailor.desc">Hotels, transfers, activities — perfectly synced to your pace.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="svc.humans.title">24/7 real humans</h3>
+            <p class="section-sub"><span data-i18n="svc.humans.desc">Message us anytime. We solve issues while you enjoy.</span> <a href="#contact" data-i18n="svc.humans.link">Start a chat →</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="deals">
+    <div class="container">
+      <h2 class="section-title" data-i18n="deals.title">Limited‑time deals</h2>
+      <p class="section-sub" data-i18n="deals.sub">Scroll horizontally • tap to open details</p>
+      <div class="carousel">
+        <div class="track">
+          <div class="deal" tabindex="0" onclick="alert(i18n[currentLang]['deals.paris.alert'])">
+            <img alt="Paris" src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1200&auto=format&fit=crop"/>
+            <div class="pad">
+              <strong data-i18n="deals.paris.title">Paris — Spring escape</strong>
+              <div class="price" data-i18n="deals.paris.price">from $649</div>
+            </div>
+          </div>
+          <div class="deal" tabindex="0" onclick="alert(i18n[currentLang]['deals.bali.alert'])">
+            <img alt="Bali" src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?q=80&w=1200&auto=format&fit=crop"/>
+            <div class="pad">
+              <strong data-i18n="deals.bali.title">Bali — Wellness retreat</strong>
+              <div class="price" data-i18n="deals.bali.price">from $799</div>
+            </div>
+          </div>
+          <div class="deal" tabindex="0" onclick="alert(i18n[currentLang]['deals.tokyo.alert'])">
+            <img alt="Tokyo" src="https://images.unsplash.com/photo-1513407030348-c983a97b98d8?q=80&w=1200&auto=format&fit=crop"/>
+            <div class="pad">
+              <strong data-i18n="deals.tokyo.title">Tokyo — Food tour</strong>
+              <div class="price" data-i18n="deals.tokyo.price">from $979</div>
+            </div>
+          </div>
+          <div class="deal" tabindex="0" onclick="alert(i18n[currentLang]['deals.patagonia.alert'])">
+            <img alt="Patagonia" src="https://images.unsplash.com/photo-1544989164-31dc3c645987?q=80&w=1200&auto=format&fit=crop"/>
+            <div class="pad">
+              <strong data-i18n="deals.patagonia.title">Patagonia — Lakes & peaks</strong>
+              <div class="price" data-i18n="deals.patagonia.price">from $699</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px" class="ribbon">
+        <div>
+          <strong data-i18n="deals.ribbon.title">Subscribe to deal alerts</strong>
+          <p style="margin:.35rem 0 0" data-i18n="deals.ribbon.desc">Get weekly mint‑fresh fares direct to your inbox.</p>
+        </div>
+        <form class="newsletter" onsubmit="alert(i18n[currentLang]['ui.thanks']); return false;">
+          <input required type="email" data-i18n-placeholder="form.email.placeholder" placeholder="Your email"/>
+          <button class="btn" type="submit" data-i18n="ui.notify">Notify me</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+      <h2 class="section-title" data-i18n="why.title">Why travelers choose White Travel</h2>
+      <p class="section-sub" data-i18n="why.sub">We obsess over the details — so you don’t have to.</p>
+      <div class="services">
+        <div class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 7 9 18l-5-5" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="why.best.title">Best‑price guarantee</h3>
+            <p class="section-sub" data-i18n="why.best.desc">Found it cheaper? We match it and add perks.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s9-6 9-12a9 9 0 1 0-18 0c0 6 9 12 9 12Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="why.network.title">Global network</h3>
+            <p class="section-sub" data-i18n="why.network.desc">Trusted partners in 70+ countries to unlock VIP access.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v12H4z" stroke="currentColor" stroke-width="2"/><path d="M4 13h16M8 21h8" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <div>
+            <h3 data-i18n="why.flex.title">No‑stress changes</h3>
+            <p class="section-sub" data-i18n="why.flex.desc">Flexible policies & proactive re‑routing when plans shift.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title" data-i18n="testi.title">Traveler love</h2>
+      <p class="section-sub" data-i18n="testi.sub">Real stories from mint‑happy adventurers.</p>
+      <div class="testi">
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="testi.one">“Flawless from booking to landing. The Tokyo food tour was unreal!”</p>
+          <small>— Maya R.</small>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="testi.two">“They re‑routed us in minutes during a storm. Five‑star service.”</p>
+          <small>— Lucas P.</small>
+        </div>
+        <div class="quote">
+          <div class="stars">★★★★★</div>
+          <p data-i18n="testi.three">“Our Patagonia honeymoon felt tailor‑made. Incredible value.”</p>
+          <small>— Sofia & Ben</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title" data-i18n="faq.title">Frequently Asked Questions</h2>
+      <p class="section-sub" data-i18n="faq.sub">Answers to common traveler questions</p>
+      <div class="services">
+        <div class="service">
+          <div class="icon">?</div>
+          <div>
+            <h3 data-i18n="faq.change.title">Can I change my booking?</h3>
+            <p class="section-sub" data-i18n="faq.change.desc">Yes, most bookings are flexible. Contact us and we’ll handle changes.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">?</div>
+          <div>
+            <h3 data-i18n="faq.group.title">Do you offer group discounts?</h3>
+            <p class="section-sub" data-i18n="faq.group.desc">Absolutely, groups of 5 or more get special deals and perks.</p>
+          </div>
+        </div>
+        <div class="service">
+          <div class="icon">?</div>
+          <div>
+            <h3 data-i18n="faq.pay.title">What payment methods are accepted?</h3>
+            <p class="section-sub" data-i18n="faq.pay.desc">We accept credit cards, PayPal, and wire transfers for your convenience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <div>
+        <h2 class="section-title" data-i18n="contact.title">Let’s design your trip</h2>
+        <p class="section-sub" data-i18n="contact.sub">Tell us a few details — we’ll reply with ideas & exact pricing.</p>
+        <form action="https://formsubmit.co/48cd2d6530c9cc5dd5db48370273535f" method="POST">
+          <input type="hidden" name="_subject" value="New trip inquiry from White Travel"/>
+          <input type="hidden" name="_template" value="table"/>
+          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_captcha" value="false"/>
+          <div class="form-row">
+            <div>
+              <label for="name" data-i18n="form.name.label">Full name</label>
+              <input id="name" name="name" required data-i18n-placeholder="form.name.placeholder" placeholder="Jane Traveler"/>
+            </div>
+            <div>
+              <label for="email" data-i18n="form.email.label">Email</label>
+              <input id="email" name="email" required type="email" data-i18n-placeholder="form.email.placeholder" placeholder="jane@email.com"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div>
+              <label for="phone" data-i18n="form.phone.label">Phone (optional)</label>
+              <input id="phone" name="phone" data-i18n-placeholder="form.phone.placeholder" placeholder="+1 555 123 4567"/>
+            </div>
+          </div>
+          <div>
+            <label for="message" data-i18n="form.message.label">Anything we should know?</label>
+            <textarea id="message" name="message" data-i18n-placeholder="form.message.placeholder" placeholder="Budget, hotel style, must‑do experiences…"></textarea>
+          </div>
+          <button class="btn" type="submit" data-i18n="form.submit">Send request</button>
+        </form>
+      </div>
+      <div>
+        <div class="ribbon">
+          <div>
+            <ul style="margin:0;padding-left:18px">
+              <li><strong data-i18n="contact.info.hours.label">Office hours:</strong> <span data-i18n="contact.info.hours.value">24/7 online support</span></li>
+              <li><strong data-i18n="contact.info.email.label">Email:</strong> <span>whitetravel.contact@gmail.com</span></li>
+              <li><strong data-i18n="contact.info.hq.label">HQ:</strong> <span>2721 Ocean Blvd, apt 303<br/>Hollywood Florida &nbsp; ZIP: 33019</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="foot-logo">
+          <img src="white-travel-logo.png" alt="White Travel logo">
+          <strong>WHITE TRAVEL</strong>
+        </div>
+        <p style="color:#d6fffa" data-i18n="foot.tagline">We craft joyful journeys — responsibly and transparently.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.company">Company</h4>
+        <a href="#why" data-i18n="foot.about">About</a><br/>
+        <a href="#testimonials" data-i18n="foot.reviews">Reviews</a><br/>
+        <a href="#services" data-i18n="foot.services">Services</a>
+      </div>
+      <div>
+        <h4 data-i18n="foot.help">Help</h4>
+        <a href="#contact" data-i18n="foot.contact">Contact</a><br/>
+        <a href="#faq" data-i18n="foot.faq">FAQ</a><br/>
+        <a href="#" data-i18n="foot.terms">Terms & Privacy</a>
+      </div>
+    </div>
+    <div class="container legal">© <span id="year"></span> <span>White Travel.</span> <span data-i18n="foot.rights">All rights reserved. • Built with ❤ in mint.</span></div>
+  </footer>
+
+  <script>
+    // i18n dictionary
+    const i18n = {
+      en: {
+        "meta.title":"White Travel — Explore the world with us",
+        "meta.description":"White Travel Agency — Inspiring journeys, curated deals, and seamless planning. Fly around the world with style.",
+        "nav.destinations":"Destinations","nav.services":"Services","nav.deals":"Deals","nav.why":"Why Us","nav.reviews":"Reviews","nav.contact":"Contact",
+        "hero.badge":"Fly further, spend less",
+        "hero.title":"See the world in mint & style ✈️",
+        "hero.subtitle":"Bespoke trips, lightning‑fast support, and exclusive fares. From city breaks to once‑in‑a‑lifetime escapes — your journey starts here.",
+        "hero.explore":"Explore Destinations",
+        "hero.quote":"Get a free quote",
+        "dest.title":"Trending destinations","dest.sub":"Click a card to bookmark. Prices update live.",
+        "ui.save":"♥ Save","ui.saved":"✔ Saved","ui.notify":"Notify me","ui.thanks":"Thanks! You are on the list.",
+        "svc.title":"Concierge‑level services","svc.sub":"From planning to touchdown — we take care of every detail.",
+        "svc.monitor.title":"Flight deals monitor","svc.monitor.desc":"We track live fares and ping you when prices drop.","svc.monitor.link":"See hot deals →",
+        "svc.tailor.title":"Tailor‑made itineraries","svc.tailor.desc":"Hotels, transfers, activities — perfectly synced to your pace.",
+        "svc.humans.title":"24/7 real humans","svc.humans.desc":"Message us anytime. We solve issues while you enjoy.","svc.humans.link":"Start a chat →",
+        "deals.title":"Limited‑time deals","deals.sub":"Scroll horizontally • tap to open details",
+        "deals.paris.title":"Paris — Spring escape","deals.paris.price":"from $649","deals.paris.alert":"Paris spring escape — round trip + 3 nights boutique hotel. Ask our team for dates!",
+        "deals.bali.title":"Bali — Wellness retreat","deals.bali.price":"from $799","deals.bali.alert":"Bali wellness retreat — flights + 5 nights eco‑resort. DM us for availability!",
+        "deals.tokyo.title":"Tokyo — Food tour","deals.tokyo.price":"from $979","deals.tokyo.alert":"Tokyo food tour — flights + 4 nights, guided experiences. Ping us for the full plan!",
+        "deals.patagonia.title":"Patagonia — Lakes & peaks","deals.patagonia.price":"from $699","deals.patagonia.alert":"Bariloche & Patagonia — flights + lakeside lodge. Ask for family pricing!",
+        "deals.ribbon.title":"Subscribe to deal alerts","deals.ribbon.desc":"Get weekly mint‑fresh fares direct to your inbox.",
+        "why.title":"Why travelers choose White Travel","why.sub":"We obsess over the details — so you don’t have to.",
+        "why.best.title":"Best‑price guarantee","why.best.desc":"Found it cheaper? We match it and add perks.",
+        "why.network.title":"Global network","why.network.desc":"Trusted partners in 70+ countries to unlock VIP access.",
+        "why.flex.title":"No‑stress changes","why.flex.desc":"Flexible policies & proactive re‑routing when plans shift.",
+        "testi.title":"Traveler love","testi.sub":"Real stories from mint‑happy adventurers.",
+        "testi.one":"“Flawless from booking to landing. The Tokyo food tour was unreal!”",
+        "testi.two":"“They re‑routed us in minutes during a storm. Five‑star service.”",
+        "testi.three":"“Our Patagonia honeymoon felt tailor‑made. Incredible value.”",
+        "faq.title":"Frequently Asked Questions","faq.sub":"Answers to common traveler questions",
+        "faq.change.title":"Can I change my booking?","faq.change.desc":"Yes, most bookings are flexible. Contact us and we’ll handle changes.",
+        "faq.group.title":"Do you offer group discounts?","faq.group.desc":"Absolutely, groups of 5 or more get special deals and perks.",
+        "faq.pay.title":"What payment methods are accepted?","faq.pay.desc":"We accept credit cards, PayPal, and wire transfers for your convenience.",
+        "contact.title":"Let’s design your trip","contact.sub":"Tell us a few details — we’ll reply with ideas & exact pricing.",
+        "contact.info.hours.label":"Office hours:","contact.info.hours.value":"24/7 online support","contact.info.email.label":"Email:","contact.info.hq.label":"HQ:",
+        "form.name.label":"Full name","form.name.placeholder":"Jane Traveler",
+        "form.email.label":"Email","form.email.placeholder":"your@email.com",
+        "form.phone.label":"Phone (optional)","form.phone.placeholder":"+1 555 123 4567",
+        "form.message.label":"Anything we should know?","form.message.placeholder":"Budget, hotel style, must‑do experiences…",
+        "form.submit":"Send request",
+        "foot.tagline":"We craft joyful journeys — responsibly and transparently.",
+        "foot.company":"Company","foot.about":"About","foot.reviews":"Reviews","foot.services":"Services",
+        "foot.help":"Help","foot.contact":"Contact","foot.faq":"FAQ","foot.terms":"Terms & Privacy","foot.rights":"All rights reserved. • Built with ❤ in mint."
+      },
+      es: {
+        "meta.title":"White Travel — Explorá el mundo con nosotros",
+        "meta.description":"White Travel Agency — Viajes inspiradores, ofertas curadas y planificación sin fricción. Volá por el mundo con estilo.",
+        "nav.destinations":"Destinos","nav.services":"Servicios","nav.deals":"Ofertas","nav.why":"Por qué nosotros","nav.reviews":"Reseñas","nav.contact":"Contacto",
+        "hero.badge":"Vuela más lejos, gastá menos",
+        "hero.title":"Conocé el mundo con estilo mint ✈️",
+        "hero.subtitle":"Viajes a medida, soporte rapidísimo y tarifas exclusivas. De escapadas urbanas a experiencias únicas — tu aventura empieza acá.",
+        "hero.explore":"Explorar destinos",
+        "hero.quote":"Pedí una cotización",
+        "dest.title":"Destinos en tendencia","dest.sub":"Tocá una tarjeta para guardar. Los precios se actualizan en vivo.",
+        "ui.save":"♥ Guardar","ui.saved":"✔ Guardado","ui.notify":"Avisarme","ui.thanks":"¡Gracias! Ya estás en la lista.",
+        "svc.title":"Servicios de concierge","svc.sub":"Del planeo al aterrizaje — nos ocupamos de cada detalle.",
+        "svc.monitor.title":"Alerta de ofertas aéreas","svc.monitor.desc":"Seguimos tarifas en vivo y te avisamos cuando bajan.","svc.monitor.link":"Ver ofertas →",
+        "svc.tailor.title":"Itinerarios a medida","svc.tailor.desc":"Hoteles, traslados y actividades — a tu ritmo.",
+        "svc.humans.title":"Humanos 24/7","svc.humans.desc":"Escribinos en cualquier momento. Nosotros resolvemos mientras vos disfrutás.","svc.humans.link":"Iniciar chat →",
+        "deals.title":"Ofertas por tiempo limitado","deals.sub":"Deslizá en horizontal • tocá para ver detalles",
+        "deals.paris.title":"París — Escapada de primavera","deals.paris.price":"desde $649","deals.paris.alert":"París en primavera — vuelo ida y vuelta + 3 noches en hotel boutique. ¡Consultá fechas!",
+        "deals.bali.title":"Bali — Retiro de bienestar","deals.bali.price":"desde $799","deals.bali.alert":"Bali wellness — vuelos + 5 noches en eco‑resort. ¡Preguntá por disponibilidad!",
+        "deals.tokyo.title":"Tokio — Tour gastronómico","deals.tokyo.price":"desde $979","deals.tokyo.alert":"Tokio foodie — vuelos + 4 noches y experiencias guiadas. ¡Pedí el plan completo!",
+        "deals.patagonia.title":"Patagonia — Lagos y cumbres","deals.patagonia.price":"desde $699","deals.patagonia.alert":"Bariloche & Patagonia — vuelos + lodge frente al lago. ¡Consultá precio familiar!",
+        "deals.ribbon.title":"Suscribite a alertas de ofertas","deals.ribbon.desc":"Recibí tarifas frescas cada semana en tu correo.",
+        "why.title":"Por qué los viajeros eligen White Travel","why.sub":"Obsesionados con los detalles — para que vos no tengas que hacerlo.",
+        "why.best.title":"Mejor precio garantizado","why.best.desc":"¿Lo viste más barato? Lo igualamos y sumamos beneficios.",
+        "why.network.title":"Red global","why.network.desc":"Socios confiables en 70+ países para acceso VIP.",
+        "why.flex.title":"Cambios sin estrés","why.flex.desc":"Políticas flexibles y re‑enrutamiento proactivo si cambian los planes.",
+        "testi.title":"Lo que dicen los viajeros","testi.sub":"Historias reales de aventureros felices con mint.",
+        "testi.one":"“Perfecto de la reserva al aterrizaje. ¡El tour foodie en Tokio, tremendo!”",
+        "testi.two":"“Nos re‑encaminaron en minutos durante una tormenta. Servicio cinco estrellas.”",
+        "testi.three":"“Nuestra luna de miel en Patagonia fue a medida. Excelente relación precio‑valor.”",
+        "faq.title":"Preguntas frecuentes","faq.sub":"Respuestas a dudas habituales",
+        "faq.change.title":"¿Puedo cambiar mi reserva?","faq.change.desc":"Sí, la mayoría son flexibles. Escribinos y lo gestionamos.",
+        "faq.group.title":"¿Hacen descuentos para grupos?","faq.group.desc":"Claro, grupos de 5+ tienen precios y beneficios especiales.",
+        "faq.pay.title":"¿Qué medios de pago aceptan?","faq.pay.desc":"Tarjetas de crédito, PayPal y transferencias bancarias.",
+        "contact.title":"Diseñemos tu viaje","contact.sub":"Contanos algunos detalles — te enviamos ideas y precio exacto.",
+        "contact.info.hours.label":"Horario de atención:","contact.info.hours.value":"Soporte online 24/7","contact.info.email.label":"Email:","contact.info.hq.label":"Sede:",
+        "form.name.label":"Nombre completo","form.name.placeholder":"Juan Viajero",
+        "form.email.label":"Email","form.email.placeholder":"tu@email.com",
+        "form.phone.label":"Teléfono (opcional)","form.phone.placeholder":"+54 9 11 5555 5555",
+        "form.message.label":"¿Algo que debamos saber?","form.message.placeholder":"Presupuesto, estilo de hotel, experiencias imperdibles…",
+        "form.submit":"Enviar solicitud",
+        "foot.tagline":"Creamos viajes felices — con responsabilidad y transparencia.",
+        "foot.company":"Empresa","foot.about":"Acerca de","foot.reviews":"Reseñas","foot.services":"Servicios",
+        "foot.help":"Ayuda","foot.contact":"Contacto","foot.faq":"Preguntas frecuentes","foot.terms":"Términos y privacidad","foot.rights":"Todos los derechos reservados • Hecho con ❤ en mint."
+      }
+    };
+    let currentLang = (localStorage.getItem('lang') || 'en');
+
+    function applyI18n(lang){
+      // text nodes
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(i18n[lang][key]) el.textContent = i18n[lang][key];
+      });
+      // placeholders & other attributes
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+        const key = el.getAttribute('data-i18n-placeholder');
+        if(i18n[lang][key]) el.setAttribute('placeholder', i18n[lang][key]);
+      });
+      document.querySelectorAll('[data-i18n-attr]').forEach(el=>{
+        // format: "attr:key"
+        const spec = el.getAttribute('data-i18n-attr'); // e.g., "content:meta.description"
+        const [attr, key] = spec.split(':');
+        if(attr && key && i18n[lang][key]) el.setAttribute(attr, i18n[lang][key]);
+      });
+      // page lang & title/description
+      document.documentElement.setAttribute('lang', lang);
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      // Save/ Saved labels for cards already toggled
+      document.querySelectorAll('.like').forEach(el=>{
+        if(el.textContent.trim().startsWith('✔')||el.textContent.trim().includes('Guardado')){
+          el.textContent = i18n[lang]['ui.saved'];
+        }else{
+          el.textContent = i18n[lang]['ui.save'];
+        }
+      });
+    }
+
+    // Like toggle on destination cards
+    function toggleLike(el){
+      const badge = el.querySelector('.like');
+      const saved = badge.textContent.includes('✔') || badge.textContent.toLowerCase().includes('guardado') || badge.textContent.toLowerCase().includes('saved');
+      badge.textContent = saved ? i18n[currentLang]['ui.save'] : i18n[currentLang]['ui.saved'];
+      badge.style.background = saved ? 'rgba(15,107,99,.95)' : 'rgba(255,255,255,.92)';
+      badge.style.color = saved ? '#fff' : '#0f2f2b';
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const sel = document.getElementById('lang-select');
+      sel.value = currentLang;
+      sel.addEventListener('change', e=>applyI18n(e.target.value));
+      applyI18n(currentLang);
+    });
+  </script>
+</body>
+</html>
